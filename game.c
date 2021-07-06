@@ -1,17 +1,17 @@
 #include <gbalib.h>
 void textbox(char * text) {
-    Color  rectanglecolor = createColor(204, 255, 255);
+    Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 110};
     Size rectSize = {200, 40};
 
     Position text_pos = {40, 120};
-    Color text_color = createColor(12,12,12);
+    Color black = createColor(0,0,0);
     Size textSize = {180, 30};
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
-            drawFilledRectangle(rectanglecolor, rectPos, rectSize);
-            animateTextFast(text,text_color, text_pos, textSize);
+            drawFilledRectangle(lightblue, rectPos, rectSize);
+            animateTextFast(text,black, text_pos, textSize);
             updateScreen();
             break;
         }
@@ -21,32 +21,39 @@ void textbox(char * text) {
 
 int main() {
     // Add code here!
-    Background background = createBackground("kitchen");
+    Background kitchen_background = createBackground("kitchen");
     Position bg_pos = {0,0};
-    drawBackground (background, bg_pos);
 
     Position text_pos1 = {60, 120};
-    Color text_color1 = createColor(255,255,255);
-    drawText("Start Game",text_color1, text_pos1);
-
-
+    Color white = createColor(255,255,255);
 
     Sound music = createSound("maintheme");
+
+    Background burger_background = createBackground("kitchenburger");
+
+    drawBackground (kitchen_background, bg_pos);
+
+
+    drawText("Press A to Start Game",white, text_pos1);
+
+
+
+
     playSound(music, true);
     wait(0.3);
 
-    Background background1 = createBackground("kitchenburger");
+
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
-            drawBackground (background1, bg_pos);
+            drawBackground (burger_background, bg_pos);
             updateScreen();
             break;
         }
         updateScreen();
     }
     
-    textbox("Welcome to my restaurant");
+    textbox("Feastopolis is one of those cities that never sleeps with foods dancing and buzzing around the town plate.");
     textbox("Where you make sandwiches!");
     textbox("And help me beat my rival!");
     
