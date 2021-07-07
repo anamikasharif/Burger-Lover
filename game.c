@@ -91,10 +91,15 @@ int main() {
     Size rectSize = {80, 53};
     Size textSize = {100, 100};
     Size fullscreen = {240, 160};
+    Color red = createColor(255, 0, 0);
+    Color green = createColor(0, 255, 0);
+    Color blue = createColor(0,0, 255);
+    Color torq = createColor (0, 250, 255);
     Color grey = createColor (250, 250, 250);
     Color white = createColor(255,255,255);
     Color black = createColor(0,0,0);
     Position center = {100,80};
+    Position textcenter = {90, 75};
     Position R1 = {0,0};
     Position R2 = {80,0};
     Position R3 = {160,0};
@@ -128,14 +133,6 @@ int main() {
       updateScreen();
     }
 
-    option_textbox("hi","hi", 1);
-    option_textbox("hello", "hello", 2);
-    
-
-
-
-
-    
     wait(0.3);
 
     bool Xwaspressed = false;
@@ -147,15 +144,7 @@ int main() {
         }
         updateScreen ();
       }
-    Xwaspressed = false;
-      while (Xwaspressed == false) {
-        Xwaspressed = wasButtonPressed(A);
-        if (Xwaspressed ==true) {
-          drawBlockText("HEY WAKE UP",black,R5 ,textSize);
-          animateTextFast	("WAKE UP",white,R5,textSize);
-        }
-        updateScreen ();
-      }   
+
         while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
@@ -169,4 +158,21 @@ int main() {
     textbox("Feastopolis is one of those cities that never sleeps with foods dancing and buzzing around the town plate.");
     textbox("Where you make sandwiches!");
     textbox("And help me beat my rival!"); 
+
+    option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
+    option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell by the smell that the food is amazing", 0 );
+    option_textbox ("Mop the floors", "Dump ketchup on Bill", 1);
+    option_textbox ( "Take a 'bathroom' break", "Take orders", 2);
+    option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
+
+  drawFilledRectangle (black, R1, fullscreen);
+  if (love > 2) {
+    drawFilledRectangle (green, R5, rectSize);
+    drawText ("good ending", white, textcenter);
   }
+  if (love <= 2) {
+    drawFilledRectangle (red, R5, rectSize);
+    drawText ("bad ending", black, textcenter);
+  }
+  updateScreen ();
+}
