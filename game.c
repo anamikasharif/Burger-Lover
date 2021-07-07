@@ -2,12 +2,12 @@
 int love;
 void textbox(char * text) {
     Color  lightblue = createColor(204, 255, 255);
-    Position rectPos = {20, 110};
-    Size rectSize = {200, 40};
+    Position rectPos = {20, 100};
+    Size rectSize = {200, 50};
 
-    Position text_pos = {40, 120};
+    Position text_pos = {30, 105};
     Color black = createColor(0,0,0);
-    Size textSize = {180, 30};
+    Size textSize = {180, 45};
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
@@ -147,14 +147,18 @@ int main() {
         updateScreen();
     }
     
-    textbox("Feastopolis is one of those cities that never sleeps with foods dancing and buzzing around the town plate.");
-    textbox("Where you make sandwiches!");
-    textbox("And help me beat my rival!"); 
-
+    textbox("So you must be the new hire. Cherry, right?"); 
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
+    textbox ("I'm Bill! I'm actually the manager here. I know BurgerTown isn't much, but it has a lot of heart.");
     option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell by the smell that the food is amazing", 0 );
+    textbox ("I'm glad to hear that! Competition is really tight here especially with De Bon Gout next door.");
+    textbox ("But I love this resturant and I hope you learn to love it too!");
+    textbox ("Well let's not waste any more time and dive into your first day!");
+    textbox ("What do you want to do first?");
     option_textbox ("Mop the floors", "Dump ketchup on Bill", 1);
+    textbox ("What do you want to do next?");
     option_textbox ( "Take a 'bathroom' break", "Take orders", 2);
+    textbox ("A customer is angry about their order. What do you do?");
     option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
 
   drawFilledRectangle (black, R1, fullscreen);
