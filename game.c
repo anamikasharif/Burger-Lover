@@ -124,14 +124,6 @@ int main() {
     playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
 
-    while (true) {
-        bool buttonAWasPressed = wasButtonPressed(A);
-        if (buttonAWasPressed == true) {
-            drawBackground(kitchen_background, bg_pos);
-            break;
-        }
-      updateScreen();
-    }
 
     wait(0.3);
 
