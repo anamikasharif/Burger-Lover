@@ -19,7 +19,7 @@ void textbox(char * text) {
     updateScreen();
     }
 }
-void option_textbox(char * text1, char * text2) {
+void option_textbox(char * text1, char * text2, int option) {
     Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 100};
     Size rectSize = {200, 50};
@@ -73,7 +73,13 @@ void option_textbox(char * text1, char * text2) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
             hideSprite(tomato_sprite);
-            return;
+            if (sprite_position.y == 105 && option == 1) {
+              love += 1;
+            } 
+            if (sprite_position.y == 122 && option == 2) {
+              love += 1;
+            }
+          return;
         }
     }
 }
@@ -108,15 +114,17 @@ int main() {
     Background burger_background = createBackground("kitchenburger");
 
     drawBackground (kitchen_background, bg_pos);
-    
-
-    option_textbox("hi","hi");
+    playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
 
+    option_textbox("hi","hi", 1);
+    option_textbox("hello", "hello", 2);
+    
 
 
 
-    playSound(music, true);
+
+    
     wait(0.3);
 
     bool Xwaspressed = false;
