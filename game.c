@@ -1,4 +1,5 @@
 #include <gbalib.h>
+int love;
 void textbox(char * text) {
     Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 110};
@@ -80,6 +81,7 @@ void option_textbox(char * text1, char * text2) {
 
 int main() {
     // Add code here!
+    love = 0;
     Size rectSize = {80, 53};
     Size textSize = {100, 100};
     Size fullscreen = {240, 160};
