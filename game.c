@@ -104,6 +104,8 @@ int main() {
     Position R7 = {0, 106};
     Position R8 = {80, 106};
     Position R9 = {160, 106};
+
+    Background startscreen = createBackground("startscreen");
     Background kitchen_background = createBackground("kitchen");
     Position bg_pos = {0,0};
 
@@ -113,9 +115,18 @@ int main() {
 
     Background burger_background = createBackground("kitchenburger");
 
-    drawBackground (kitchen_background, bg_pos);
+    drawBackground (startscreen, bg_pos);
     playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
+
+    while (true) {
+        bool buttonAWasPressed = wasButtonPressed(A);
+        if (buttonAWasPressed == true) {
+            drawBackground(kitchen_background, bg_pos);
+            break;
+        }
+      updateScreen();
+    }
 
     option_textbox("hi","hi", 1);
     option_textbox("hello", "hello", 2);
