@@ -19,6 +19,18 @@ void textbox(char * text) {
     updateScreen();
     }
 }
+void change_background(Background background) {
+    Position bg_pos = {0,0};
+    while (true) {
+        bool buttonAWasPressed = wasButtonPressed(A);
+        if (buttonAWasPressed == true) {
+            drawBackground(background, bg_pos);
+            break;
+        }
+      updateScreen();
+    }
+}
+
 void option_textbox(char * text1, char * text2, int option) {
     Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 100};
