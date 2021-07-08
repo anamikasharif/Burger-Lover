@@ -25,6 +25,7 @@ void change_background(Background background) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
             drawBackground(background, bg_pos);
+            updateScreen();
             break;
         }
       updateScreen();
@@ -130,7 +131,11 @@ int main() {
 
     Sound music = createSound("maintheme");
 
-    Background burger_background = createBackground("kitchenburger");
+    Background normalburger = createBackground("normalburger");
+    Background madburger = createBackground("madburger");
+    Background specialburger = createBackground("specialburger");
+    Background worriedburger = createBackground("worriedburger");
+
 
     drawBackground (startscreen, bg_pos);
     playSound(music, true);
@@ -145,19 +150,11 @@ int main() {
         if (Xwaspressed ==true) {
           drawFilledRectangle(black,R1,fullscreen);
           animateTextFast ("Feastopolis is a city that never sleeps, every night a feast of foods dancing. Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes: pizzas, calzones, pico de gallo, and even pasta. But here in Feastopolis, I have met food I never knew even existed. From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.",white, R1,fullscreen);
+          updateScreen();
         }
         updateScreen ();
       }
-
-        while (true) {
-        bool buttonAWasPressed = wasButtonPressed(A);
-        if (buttonAWasPressed == true) {
-            drawBackground (burger_background, bg_pos);
-            updateScreen();
-            break;
-        }
-        updateScreen();
-    }
+    change_background(normalburger);
     
     textbox("So you must be the new hire. Cherry, right?"); 
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
@@ -170,6 +167,11 @@ int main() {
     option_textbox ("Mop the floors", "Dump ketchup on Bill", 1);
     textbox ("What do you want to do next?");
     option_textbox ( "Take a 'bathroom' break", "Take orders", 2);
+
+    if (love <= 1) {
+      change_background(madburger);
+    }
+
     textbox ("A customer is angry about their order. What do you do?");
     option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
 
