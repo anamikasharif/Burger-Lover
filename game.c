@@ -203,6 +203,7 @@ int main() {
     if (love >= 2) {
       change_background(flushedburger);
     }
+    
 
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
