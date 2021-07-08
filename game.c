@@ -19,6 +19,7 @@ void textbox(char * text) {
     updateScreen();
     }
 }
+
 void change_background(Background background) {
     Position bg_pos = {0,0};
     while (true) {
@@ -114,7 +115,12 @@ void option_textbox(char * text1, char * text2, int option) {
         }
     }
 }
-
+void update_meter() {
+  Color red = createColor(255,128,171);
+  Position R1 = {0,0};
+  Size meter_size = {20, love * 5};
+  drawFilledRectangle(red, R1, meter_size);
+}
 
 int main() {
     love = 0;
@@ -185,8 +191,10 @@ int main() {
     textbox ("Well let's not waste any more time and dive into your first day!");
     textbox ("What do you want to do first?");
     option_textbox ("Mop the floors", "Dump ketchup on Bill", 1);
+    update_meter();
     textbox ("What do you want to do next?");
     option_textbox ( "Take a 'bathroom' break", "Take orders", 2);
+    update_meter();
 
     if (love <= 1) {
       change_background(madburger);
@@ -197,6 +205,7 @@ int main() {
     if (love >= 2) {
       change_background(flushedburger);
     }
+    update_meter();
 
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
