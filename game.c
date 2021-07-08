@@ -131,10 +131,12 @@ int main() {
 
     Sound music = createSound("maintheme");
 
+    Background flushedburger = createBackground("kitchenburger");
     Background normalburger = createBackground("normalburger");
     Background madburger = createBackground("madburger");
     Background specialburger = createBackground("specialburger");
     Background worriedburger = createBackground("worriedburger");
+    Background sadburger = createBackground("sadburger");
 
 
     drawBackground (startscreen, bg_pos);
@@ -174,6 +176,9 @@ int main() {
 
     textbox ("A customer is angry about their order. What do you do?");
     option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
+    if (love >= 2) {
+      change_background(flushedburger);
+    }
 
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
