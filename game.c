@@ -30,6 +30,24 @@ void change_background(Background background) {
       updateScreen();
     }
 }
+void exposition(char * text) {
+  Color white = createColor(255,255,255);
+  Color black = createColor(0,0,0);
+  Position R1 = {0,0};
+  Position R4 = {0,53};
+  Size fullscreen = {240, 160};
+   bool exposcreen1 = true;
+    while (exposcreen1 == true) {
+      bool Xwaspressed = wasButtonPressed (A);
+        if (Xwaspressed ==true) {
+          drawFilledRectangle(black,R1,fullscreen);
+          animateTextFast (text, white, R4, fullscreen );
+          exposcreen1 = false;
+          break;
+      }
+      updateScreen();
+    }
+ }
 
 void option_textbox(char * text1, char * text2, int option) {
     Color  lightblue = createColor(204, 255, 255);
@@ -98,7 +116,6 @@ void option_textbox(char * text1, char * text2, int option) {
 
 
 int main() {
-    // Add code here!
     love = 0;
     Size rectSize = {80, 53};
     Size textSize = {100, 100};
@@ -139,17 +156,10 @@ int main() {
 
     wait(0.3);
 
-    bool Xwaspressed = false;
-    while (Xwaspressed == false) {
-      Xwaspressed= wasButtonPressed(A);
-        if (Xwaspressed ==true) {
-          drawFilledRectangle(black,R1,fullscreen);
-          animateTextFast ("Feastopolis is a city that never sleeps, every night a feast of foods dancing. Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes: pizzas, calzones, pico de gallo, and even pasta. But here in Feastopolis, I have met food I never knew even existed. From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.",white, R1,fullscreen);
-        }
-        updateScreen ();
-      }
+    exposition ("my froggy");
+    exposition ("hiii");
 
-        while (true) {
+    while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
             drawBackground (burger_background, bg_pos);
@@ -157,7 +167,7 @@ int main() {
             break;
         }
         updateScreen();
-    }
+       }
     
     textbox("So you must be the new hire. Cherry, right?"); 
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
@@ -183,4 +193,4 @@ int main() {
     drawText ("bad ending", black, textcenter);
   }
   updateScreen ();
-}
+  }
