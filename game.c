@@ -51,7 +51,12 @@ void exposition(char * text) {
       updateScreen();
     }
  }
-
+void update_meter() {
+  Color red = createColor(255,128,171);
+  Position R1 = {0,0};
+  Size meter_size = {20, love * 5};
+  drawFilledRectangle(red, R1, meter_size);
+}
 void option_textbox(char * text1, char * text2, int option) {
     Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 100};
@@ -212,6 +217,7 @@ int main() {
       change_background(flushedburger);
     }
     update_meter();
+    
 
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
