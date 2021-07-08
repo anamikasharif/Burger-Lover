@@ -32,16 +32,17 @@ void change_background(Background background) {
     }
 }
 void exposition(char * text) {
+  Background skyline = createBackground("skyline");
   Color white = createColor(255,255,255);
   Color black = createColor(0,0,0);
   Position R1 = {0,0};
-  Position R4 = {0,53};
+  Position R4 = {13,53};
   Size fullscreen = {240, 160};
    bool exposcreen1 = true;
     while (exposcreen1 == true) {
       bool Xwaspressed = wasButtonPressed (A);
         if (Xwaspressed ==true) {
-          drawFilledRectangle(black,R1,fullscreen);
+          drawBackground(skyline, R1);
           animateTextFast (text, white, R4, fullscreen );
           exposcreen1 = false;
           break;
@@ -162,9 +163,14 @@ int main() {
 
 
     wait(0.3);
-
-    exposition ("my froggy");
-    exposition ("hiii");
+    exposition ("Feastopolis is a city that never sleeps, every night a feast of foods dancing.");
+    exposition ("Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes.");
+    exposition ("But here in Feastopolis, I have met food I never knew even existed.");
+    exposition ("From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.");
+    exposition ("Papa always dreamed of starting his own restaurant in Feastopolis.");
+    exposition ("That never happened though because he and Mama had my sister and me young.");
+    exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'");
+    exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself.");
 
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
