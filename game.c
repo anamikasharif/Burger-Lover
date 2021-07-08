@@ -170,7 +170,7 @@ int main() {
     exposition ("Papa always dreamed of starting his own restaurant in Feastopolis.");
     exposition ("That never happened though because he and Mama had my sister and me young.");
     exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'");
-    exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself.");
+    exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself...");
 
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
@@ -200,11 +200,24 @@ int main() {
 
     textbox ("A customer is angry about their order. What do you do?");
     option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
+
     if (love >= 2) {
       change_background(flushedburger);
+      textbox ("Congratulations on your first day at BurgerTown!");
+      textbox ("I really admire your hardwork and skill with the customers.");
+      textbox ("Im really glad I hired you! Lets celebrate your first day here with some drinks.");
+    }
+    if (love < 2) {
+      change_background (worriedburger);
+      textbox ("Hey, how was your first day?");
+      textbox ("It seems like you were having a bit of a rough time. Thats okay, first days can be hard. ");
+      change_background (sadburger);
+      textbox ("I remember my first day here, I accidently set the kitchen on fire.");
+      change_background (normalburger);
+      textbox ("So lets celebrate you surviving your first day!");
     }
     
-
+  wait (2);
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
     drawFilledRectangle (green, R5, rectSize);
