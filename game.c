@@ -51,8 +51,7 @@ void change_background(Background background) {
       updateScreen();
     }
 }
-void exposition(char * text) {
-  Background skyline = createBackground("skyline");
+void exposition(char * text, Background background) {
   Color white = createColor(255,255,255);
   Color black = createColor(0,0,0);
   Position R1 = {0,0};
@@ -62,7 +61,7 @@ void exposition(char * text) {
     while (exposcreen1 == true) {
       bool Xwaspressed = wasButtonPressed (A);
         if (Xwaspressed ==true) {
-          drawBackground(skyline, R1);
+          drawBackground(background, R1);
           animateTextFast (text, white, R4, fullscreen );
           exposcreen1 = false;
           break;
@@ -184,11 +183,13 @@ int main() {
 
     Background startscreen = createBackground("startscreen");
     Background kitchen_background = createBackground("kitchen");
+    Background skyline = createBackground("skyline");
+    Background burgershack = createBackground("burgershack");
     Position bg_pos = {0,0};
 
     Position text_pos1 = {60, 120};
 
-    Sound music = createSound("maintheme");
+    // Sound music = createSound("maintheme");
 
     Background flushedburger = createBackground("kitchenburger");
     Background normalburger = createBackground("normalburger");
@@ -199,20 +200,21 @@ int main() {
 
 
     drawBackground (startscreen, bg_pos);
-    playSound(music, true);
+    // playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
 
     update_meter();
     wait(0.3);
-    exposition ("Feastopolis is a city that never sleeps, every night a feast of foods dancing.");
+    exposition ("Feastopolis is a city that never sleeps, every night a feast of foods dancing.", skyline);
     update_meter();
-    exposition ("Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes.");
-    exposition ("But here in Feastopolis, I have met food I never knew even existed.");
-    exposition ("From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.");
-    exposition ("Papa always dreamed of starting his own restaurant in Feastopolis.");
-    exposition ("That never happened though because he and Mama had my sister and me young.");
-    exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'");
-    exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself...");
+    exposition ("Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes.", skyline);
+    exposition ("But here in Feastopolis, I have met food I never knew even existed.", skyline);
+    exposition ("From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.", skyline);
+    exposition ("Papa always dreamed of starting his own restaurant in Feastopolis.", skyline);
+    exposition ("That never happened though because he and Mama had my sister and me young.", skyline);
+    exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'", skyline);
+    exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself...", skyline);
+    change_background(burgershack);
 
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
@@ -247,7 +249,7 @@ int main() {
 
     if (love >= 2) {
       change_background(flushedburger);
-      textbox ("Congratulations on your first day at BurgerTown!");
+      textbox ("Congratulations on your first day at BurgerShack!");
       textbox ("I really admire your hardwork and skill with the customers.");
       textbox ("Im really glad I hired you! Lets celebrate your first day here with some drinks.");
     }
