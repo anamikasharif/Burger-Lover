@@ -20,9 +20,12 @@ void textbox(char * text) {
     }
 }
 void cherrybox(char * text) {
-    Color  lightpink = createColor(255, 106, 204);
+    Color  lightpink = createColor(255, 212, 230);
     Position rectPos = {20, 100};
     Size rectSize = {200, 50};
+
+    Size sprite_size = {16,16};
+    Sprite tomato_sprite = createSprite("tomato", sprite_size);
 
     Position text_pos = {30, 105};
     Color black = createColor(0,0,0);
@@ -92,7 +95,7 @@ void update_meter() {
   updateScreen();
 }
 void option_textbox(char * text1, char * text2, int option) {
-    Color  lightpink = createColor(255, 106, 204);
+    Color  lightpink = createColor(255, 212, 230);
     Position rectPos = {20, 100};
     Size rectSize = {200, 50};
 
@@ -260,17 +263,17 @@ int main() {
       change_background (sadburger);
       textbox ("I remember my first day here, I accidently set the kitchen on fire.");
       change_background (normalburger);
-      textbox ("So lets celebrate you surviving your first day!");
+      textbox ("But thats unimportant... lets celebrate you surviving your first day!");
     }
     update_meter();
 
   textbox ("So Cherry what brings you to Feastopolis");
-  cherrybox ("This might sound lame, but ever since I was young I dreamed about living here");
+  cherrybox ("Cherry: This might sound lame, but ever since I was young I dreamed about living here");
   textbox ("really why so?");
-  cherrybox ("a combination of things really. The culture, the food, the life...");
-  change_background (worriedburger)
+  cherrybox ("A combination of things really. The culture, the food, the life...");
+  change_background (worriedburger);
   textbox ("hey whats wrong you look sad");
-  cherrybox ("oh it nothing");
+  cherrybox ("oh its nothing");
   textbox ("Are you feeling a bit homesick?");
     
   wait (2);
