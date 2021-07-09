@@ -51,11 +51,27 @@ void exposition(char * text) {
       updateScreen();
     }
  }
+ //need to add all meters with if statement for all based on value of love
 void update_meter() {
-  Color red = createColor(255,128,171);
-  Position R1 = {0,0};
-  Size meter_size = {20, love * 5};
-  drawFilledRectangle(red, R1, meter_size);
+  Size meter_sprite = {32,32};
+  Position meter_pos = {160,20};
+  Sprite emptymeter = createSprite("emptymeter", meter_sprite);
+  Sprite meter1 = createSprite("meter1", meter_sprite);
+  Sprite meter2 = createSprite("meter2", meter_sprite);
+  Sprite meter3 = createSprite("meter3", meter_sprite);
+  Sprite fullmeter = createSprite("fullmeter", meter_sprite);
+
+  if (love == 0) {
+    updatePosition(emptymeter, meter_pos);
+    showSprite(emptymeter);
+    updateScreen();
+  }
+  if (love > 0) {
+    updatePosition(meter2, meter_pos);
+    showSprite(meter1);
+    updateScreen();
+  }
+  updateScreen();
 }
 void option_textbox(char * text1, char * text2, int option) {
     Color  lightblue = createColor(204, 255, 255);
@@ -121,12 +137,7 @@ void option_textbox(char * text1, char * text2, int option) {
         }
     }
 }
-void update_meter() {
-  Color red = createColor(255,128,171);
-  Position R1 = {0,0};
-  Size meter_size = {20, love * 5};
-  drawFilledRectangle(red, R1, meter_size);
-}
+
 
 int main() {
     love = 0;
@@ -172,9 +183,10 @@ int main() {
     playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
 
-
+    update_meter();
     wait(0.3);
     exposition ("Feastopolis is a city that never sleeps, every night a feast of foods dancing.");
+    update_meter();
     exposition ("Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes.");
     exposition ("But here in Feastopolis, I have met food I never knew even existed.");
     exposition ("From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.");
@@ -192,10 +204,10 @@ int main() {
         }
         updateScreen();
        }
-    
+    update_meter();
     textbox("So you must be the new hire. Cherry, right?"); 
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
-    textbox ("I'm Bill! I'm actually the manager here. I know BurgerTown isn't much, but it has a lot of heart.");
+    textbox ("I'm Bill! I'm actually the manager here. I know BurgerShack isn't much, but it has a lot of heart.");
     option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell by the smell that the food is amazing", 0 );
     textbox ("I'm glad to hear that! Competition is really tight here especially with De Bon Gout next door.");
     textbox ("But I love this resturant and I hope you learn to love it too!");
@@ -204,7 +216,7 @@ int main() {
     option_textbox ("Mop the floors", "Dump ketchup on Bill", 1);
     update_meter();
     textbox ("What do you want to do next?");
-    option_textbox ( "Take a 'bathroom' break", "Take orders", 2);
+    option_textbox ("Take a 'bathroom' break", "Take orders", 2);
     update_meter();
 
     if (love <= 1) {
