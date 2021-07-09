@@ -1,7 +1,7 @@
 #include <gbalib.h>
 int love;
 void textbox(char * text) {
-    Color  lightblue = createColor(204, 255, 255);
+    Color  lightpink = createColor(255, 106, 204);
     Position rectPos = {20, 100};
     Size rectSize = {200, 50};
 
@@ -11,7 +11,26 @@ void textbox(char * text) {
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
-            drawFilledRectangle(lightblue, rectPos, rectSize);
+            drawFilledRectangle(lightpink, rectPos, rectSize);
+            animateTextFast(text,black, text_pos, textSize);
+            updateScreen();
+            break;
+        }
+    updateScreen();
+    }
+}
+void cherrybox(char * text) {
+    Color  lightpink = createColor(255, 106, 204);
+    Position rectPos = {20, 100};
+    Size rectSize = {200, 50};
+
+    Position text_pos = {30, 105};
+    Color black = createColor(0,0,0);
+    Size textSize = {180, 45};
+    while (true) {
+        bool buttonAWasPressed = wasButtonPressed(A);
+        if (buttonAWasPressed == true) {
+            drawFilledRectangle(lightpink, rectPos, rectSize);
             animateTextFast(text,black, text_pos, textSize);
             updateScreen();
             break;
