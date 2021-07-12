@@ -267,12 +267,36 @@ int main() {
   textbox ("So Cherry what brings you to Feastopolis");
   cherrybox ("Cherry: This might sound lame, but ever since I was young I dreamed about living here");
   textbox ("really why so?");
-  cherrybox ("A combination of things really. The culture, the food, the life...");
+  cherrybox ("A combination of things really. The culture...the food..the atmosphere...");
+  cherrybox ("um...");
   change_background (worriedburger);
-  textbox ("hey whats wrong you look sad");
-  cherrybox ("oh its nothing");
+  textbox ("Hey whats wrong you look sad");
+  cherrybox ("oh...its nothing");
   textbox ("Are you feeling a bit homesick?");
-    
+  cherrybox ("It's the opposite actually. It's just...");
+  cherrybox ("my dad would take me and my sister to Feastopolis when we were young. And I just really miss him.");
+  change_background (normalburger);
+  if (love >= 2) {
+    textbox ("Well I bet your dad would be very proud of you. He raised a rock star.");
+  }
+  textbox ("Where would you and your family visit when you would come to Feastopolis?");
+  option_textbox("Bobbys Burger", "Patricks Potluck", 1);
+  textbox ("Really! Your dad has taste.");
+  cherrybox ("Well that is enough about me.");
+  cherrybox ("How about you? What brings you to Feastopolis Bill?");
+  textbox ("I grew up in Bugersolvia but I came here to follow my dream of starting a world class restaurant.");
+  option_textbox ("Really? You are doing a really bad job", "Wow! Really I also dreamed of starting a restaurant as well.", 2);
+  cherrybox ("Actually Bill you remind me of my dad.");
+  change_background (flushedburger);
+  textbox ("Really?");
+  option_textbox ("Yeah, you match his ambition.", "Yeah, you will never reach your dreams like him.", 1);
+  if (love >= 2) {
+    textbox ("Well thank you for being here at BurgerShack Cherry. I'll see you tommorow!");
+    textbox ("Good night!");
+  }
+  if (love < 2) {
+    textbox ("Um, well then. It is getting really late, so I will see you tommorrow.");
+  } 
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 2) {
