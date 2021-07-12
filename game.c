@@ -88,7 +88,7 @@ void update_meter() {
     updateScreen();
   }
   if (love > 0) {
-    updatePosition(meter2, meter_pos);
+    updatePosition(meter1, meter_pos);
     showSprite(meter1);
     updateScreen();
   }
@@ -192,7 +192,7 @@ int main() {
 
     Position text_pos1 = {60, 120};
 
-    // Sound music = createSound("maintheme");
+    Sound music = createSound("maintheme");
 
     Background flushedburger = createBackground("kitchenburger");
     Background normalburger = createBackground("normalburger");
@@ -203,13 +203,10 @@ int main() {
 
 
     drawBackground (startscreen, bg_pos);
-    // playSound(music, true);
+    playSound(music, true);
     drawText("Press A to Start Game",white, text_pos1);
-
-    update_meter();
     wait(0.3);
     exposition ("Feastopolis is a city that never sleeps, every night a feast of foods dancing.", skyline);
-    update_meter();
     exposition ("Back in my hometown of Tomatoville, everyone was a tomato or at least related to tomatoes.", skyline);
     exposition ("But here in Feastopolis, I have met food I never knew even existed.", skyline);
     exposition ("From dumplings to fried chicken, the world was a lot bigger than I had ever imagined.", skyline);
