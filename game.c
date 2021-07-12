@@ -19,6 +19,28 @@ void textbox(char * text) {
     updateScreen();
     }
 }
+void cherrybox(char * text) {
+    Color  lightpink = createColor(255, 212, 230);
+    Position rectPos = {20, 100};
+    Size rectSize = {200, 50};
+
+    Size sprite_size = {16,16};
+    Sprite tomato_sprite = createSprite("tomato", sprite_size);
+
+    Position text_pos = {30, 105};
+    Color black = createColor(0,0,0);
+    Size textSize = {180, 45};
+    while (true) {
+        bool buttonAWasPressed = wasButtonPressed(A);
+        if (buttonAWasPressed == true) {
+            drawFilledRectangle(lightpink, rectPos, rectSize);
+            animateTextFast(text,black, text_pos, textSize);
+            updateScreen();
+            break;
+        }
+    updateScreen();
+    }
+}
 
 void change_background(Background background) {
     Position bg_pos = {0,0};
@@ -73,7 +95,7 @@ void update_meter() {
   updateScreen();
 }
 void option_textbox(char * text1, char * text2, int option) {
-    Color  lightblue = createColor(204, 255, 255);
+    Color  lightpink = createColor(255, 212, 230);
     Position rectPos = {20, 100};
     Size rectSize = {200, 50};
 
@@ -92,7 +114,7 @@ void option_textbox(char * text1, char * text2, int option) {
     while (true) {
         bool buttonAWasPressed = wasButtonPressed(A);
         if (buttonAWasPressed == true) {
-            drawFilledRectangle(lightblue, rectPos, rectSize);
+            drawFilledRectangle(lightpink, rectPos, rectSize);
             drawFilledRectangle(white, text_pos1, textSize);
             drawBlockText(text1,black, text_pos1, textSize);
             drawFilledRectangle(white, text_pos2, textSize);
@@ -208,7 +230,7 @@ int main() {
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
     textbox ("I'm Bill! I'm actually the manager here. I know BurgerShack isn't much, but it has a lot of heart.");
     option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell by the smell that the food is amazing", 0 );
-    textbox ("I'm glad to hear that! Competition is really tight here especially with De Bon Gout next door.");
+    textbox ("I'm glad to hear that! Competition is really tight here especially with TastySandwhich next door.");
     textbox ("But I love this resturant and I hope you learn to love it too!");
     textbox ("Well let's not waste any more time and dive into your first day!");
     textbox ("What do you want to do first?");
@@ -238,9 +260,18 @@ int main() {
       change_background (sadburger);
       textbox ("I remember my first day here, I accidently set the kitchen on fire.");
       change_background (normalburger);
-      textbox ("So lets celebrate you surviving your first day!");
+      textbox ("But thats unimportant... lets celebrate you surviving your first day!");
     }
     update_meter();
+
+  textbox ("So Cherry what brings you to Feastopolis");
+  cherrybox ("Cherry: This might sound lame, but ever since I was young I dreamed about living here");
+  textbox ("really why so?");
+  cherrybox ("A combination of things really. The culture, the food, the life...");
+  change_background (worriedburger);
+  textbox ("hey whats wrong you look sad");
+  cherrybox ("oh its nothing");
+  textbox ("Are you feeling a bit homesick?");
     
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
