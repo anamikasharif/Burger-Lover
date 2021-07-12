@@ -264,7 +264,7 @@ int main() {
     }
     update_meter();
 
-  textbox ("So Cherry what brings you to Feastopolis");
+  textbox ("So Cherry, what brings you to Feastopolis?");
   cherrybox ("Cherry: This might sound lame, but ever since I was young I dreamed about living here");
   textbox ("really why so?");
   cherrybox ("A combination of things really. The culture, the food, the life...");
