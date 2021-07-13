@@ -42,6 +42,29 @@ void cherrybox(char * text) {
     }
 }
 
+void bobbox(char * text) {
+    Color  lightgreen = createColor(144,238,144);
+    Position rectPos = {20, 100};
+    Size rectSize = {200, 50};
+
+    Size sprite_size = {16,16};
+    Sprite tomato_sprite = createSprite("tomato", sprite_size);
+
+    Position text_pos = {30, 105};
+    Color black = createColor(0,0,0);
+    Size textSize = {180, 45};
+    while (true) {
+        bool buttonAWasPressed = wasButtonPressed(A);
+        if (buttonAWasPressed == true) {
+            drawFilledRectangle(lightgreen, rectPos, rectSize);
+            animateTextFast(text,black, text_pos, textSize);
+            updateScreen();
+            break;
+        }
+    updateScreen();
+    }
+}
+
 void change_background(Background background) {
     Position bg_pos = {0,0};
     while (true) {
@@ -87,14 +110,24 @@ void update_meter() {
     showSprite(emptymeter);
     updateScreen();
   }
-  if (love > 0) {
+  if (0 < love < 5) {
     updatePosition(meter1, meter_pos);
     showSprite(meter1);
     updateScreen();
   }
-  if (love > 3) {
+  if (5 <= love < 9) {
     updatePosition(meter2, meter_pos);
     showSprite(meter2);
+    updateScreen();
+  }
+  if (9 <= love < 12) {
+    updatePosition(meter3, meter_pos);
+    showSprite(meter3);
+    updateScreen();
+  }
+  if (love >= 12) {
+    updatePosition(fullmeter, meter_pos);
+    showSprite(fullmeter);
     updateScreen();
   }
   updateScreen();
@@ -215,6 +248,13 @@ int main() {
     Background flushedburger3 = createBackground("flushedburger3");
     Background normalburger3 = createBackground("normalburger3");
     Background sadburger3 = createBackground("sadburger3");
+    Background worriedburger3 = createBackground("worriedburger3");
+
+    Background madburgerbob = createBackground("madburgerbob");
+    Background sadburgerbob = createBackground("sadburgerbob");
+    Background worriedburgerbob = createBackground("worriedburgerbob");
+
+
 
 
     drawBackground (startscreen, bg_pos);
@@ -261,7 +301,7 @@ int main() {
 
     textbox ("A customer is angry about their order. What do you do?");
     option_textbox ("Apologize and redo the order", "Tell them their beard is ugly", 1);
-
+    update_meter();
     if (love >= 2) {
       change_background(flushedburger);
       textbox ("Congratulations on your first day at BurgerShack!");
@@ -300,15 +340,18 @@ int main() {
   }
   textbox ("Where would you and your family visit when you would come to Feastopolis?");
   option_textbox("Bobbys Burger", "Patricks Potluck", 1);
+  update_meter();
   textbox ("Really! Your dad has taste.");
   cherrybox ("Well that is enough about me.");
   cherrybox ("How about you? What brings you to Feastopolis Bill?");
   textbox ("I grew up in Bugersolvia but I came here to follow my dream of starting a world class restaurant.");
   option_textbox ("Really? You are doing a really bad job", "Wow! Really I also dreamed of starting a restaurant as well.", 2);
+  update_meter();
   cherrybox ("Actually Bill you remind me of my dad.");
   change_background (flushedburger);
   textbox ("Really?");
   option_textbox ("Yeah, you match his ambition.", "Yeah, you will never reach your dreams like him.", 1);
+  update_meter();
   if (love >= 3) {
     textbox ("Well thank you for being here at BurgerShack Cherry. I'll see you tommorow!");
     textbox ("Good night!");
@@ -356,26 +399,107 @@ int main() {
    option_textbox("Well, I better work hard if we can both pursue our dreams", "I need to earn some more cash anyway", 1);
 }
  
+  // bad route
+  if (love < 4) {
+    change_background(madburger);
+    textbox ("This restaurant has been a mess since you came here");
+    option_textbox("I am so sorry. The move to Feastopolis has been hard on me", "This restaurant was always a mess, worse before I came!", 1);
+    update_meter();
+    change_background(sadburger);
+    textbox("It just has been so so hard to get this restaurant started.");
+    textbox("I really need your help, no one else applied for your position.");
+    option_textbox("Not my fault your restaurant is trash", "I will try to improve my work, I am so sorry", 2);
+    update_meter();
+    change_background(madburger);
+    textbox("It is my dream to own a successful restaurant to prove my father wrong");
+    option_textbox("Are you okay?", "I bet your father was a great man.", 1);
+    update_meter();
+    textbox("My father never really believed in me.He made me feel like a failure.");
+    textbox("Honestly, Cherry he was a pretty awful person... ");
+    textbox("And I dont know, this restaurant is my way of proving myself.");
+    textbox("Is that pathetic?");
+    option_textbox("Yeah dude.I don’t really care about your daddy issues", "No its not. Burger you are enough and you don’t need to prove yourself", 2);
+    update_meter();
+  }
 
+  // 3rd date
+  if (love >= 6) {
+    change_background(normalburger2);
+    textbox("Hey, the restaurant is pretty empty tonight…");
+    change_background(flushedburger2);
+    textbox("What if we closed early and went for a walk?");
+  }
 
+  if (love < 6) {
+    change_background(normalburger2);
+    textbox("I think we should go outside to talk what to do with the restaurant");
+  }
+  option_textbox("Sounds great!", "Um sure, it’s better than sitting around in your dumpster fire restaurant", 1);
+  update_meter();
+  textbox("The sky is so pretty");
+  option_textbox("I have seen better", "Like you", 2);
+  update_meter();
+  change_background(worriedburger3);
+  textbox("oh haha…");
+  change_background(normalburger3);
+  textbox("*sigh*");
+  option_textbox("What's wrong?", "Oh what’s wrong now??", 1);
+  update_meter();
+  change_background(flushedburger3);
+  textbox("There’s just a lot going on at the moment…");
+  option_textbox("Is everything ok?","Like what? Just tell me for gods sake", 1);
+  update_meter();
 
+  if (love >= 7) {
+    textbox("So there’s this tomato-");
+  }
 
-    
+  if (love < 7) {
+    textbox("I really need this restaurant to work-");
+  }
+  change_background(sadburger3);
+  textbox("oh no...");
+  change_background(sadburgerbob);
+  bobbox("I finally found you son.");
+  bobbox("Son. Is this what you’ve been doing?");
+  bobbox("I CANT BELIEVE YOU");
+  bobbox("YOU RAN AWAY FROM BURGESLOVIA FOR SOME GIRL? A TOMATO?");
+  change_background(worriedburgerbob);
+  textbox("Dad, no-");
+  bobbox("I cant believe you left the family restaurant for this, and then starting a new one just like that");
+  bobbox("Makes me sick!");
+  change_background(madburgerbob);
+  textbox("All you do is drink all day and abandon me and my siblings.");
+  textbox("You are a terrible father, and I’m happy with the restaurant I have now!");
+  bobbox("Your mother would be ashamed.");
+  textbox("No, mom would be ashamed of you");
+  option_textbox("POP OFF GIRLBOSS", "Your moms better off dead if she knew you were this ugly", 1);
+  update_meter();
+  textbox("Go home dad. Get out.");
 
+  // final scene
+  cherrybox("Hey, can I talk to you before you leave?");
+  textbox("Of course! What do you need help with?");
+  cherrybox("I have something to need to tell you...");
+  textbox("What do you need to say...?");
+  option_textbox("I- i love you", "I like you, but you are kinda ugly...", 1);
+  update_meter();
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
-  if (love > 5) {
+  if (love >= 12) {
     stopSound(lovetheme);
     playSound(happyending, true);
-    drawFilledRectangle (green, R5, rectSize);
-    drawText ("good ending", white, textcenter);
+    // drawFilledRectangle (green, R5, rectSize);
+    // drawText ("good ending", white, textcenter);
+    exposition("After Bill fired Cherry, his business went downhill. He eventually did marry but suffered the same fate as his father, Bob. Cherry went on with life, regretting what could’ve been... ", skyline);
 
   }
-  if (love <= 5) {
+  if (love < 12) {
     stopSound(lovetheme);
     playSound(badending, true);
-    drawFilledRectangle (red, R5, rectSize);
-    drawText ("bad ending", black, textcenter);
+    // drawFilledRectangle (red, R5, rectSize);
+    // drawText ("bad ending", black, textcenter);
+    exposition("Bill accepted. Cherry and Bill went off and got married. They would go on to fix up BurgerShack and make it the best in town!", skyline);
   }
   updateScreen ();
   }
