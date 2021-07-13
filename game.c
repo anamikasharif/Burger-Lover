@@ -92,6 +92,11 @@ void update_meter() {
     showSprite(meter1);
     updateScreen();
   }
+  if (love > 3) {
+    updatePosition(meter2, meter_pos);
+    showSprite(meter2);
+    updateScreen();
+  }
   updateScreen();
 }
 void option_textbox(char * text1, char * text2, int option) {
@@ -193,6 +198,9 @@ int main() {
     Position text_pos1 = {60, 120};
 
     Sound music = createSound("maintheme");
+    Sound lovetheme = createSound("burgertheme");
+    Sound badending = createSound("badending");
+    Sound happyending = createSound("happyending");
 
     Background flushedburger = createBackground("kitchenburger");
     Background normalburger = createBackground("normalburger");
@@ -200,6 +208,12 @@ int main() {
     Background specialburger = createBackground("specialburger");
     Background worriedburger = createBackground("worriedburger");
     Background sadburger = createBackground("sadburger");
+    Background flushedburger2 = createBackground("flushedburger2");
+    Background normalburger2 = createBackground("normalburger2");
+    Background partyburger = createBackground("partyburger");
+    Background flushedburger3 = createBackground("flushedburger3");
+    Background normalburger3 = createBackground("normalburger3");
+    Background sadburger3 = createBackground("sadburger3");
 
 
     drawBackground (startscreen, bg_pos);
@@ -264,6 +278,10 @@ int main() {
     }
     update_meter();
 
+  stopSound(music);
+  playSound(lovetheme, true);
+
+
   textbox ("So Cherry, what brings you to Feastopolis?");
   cherrybox ("Cherry: This might sound lame, but ever since I was young I dreamed about living here");
   textbox ("really why so?");
@@ -290,20 +308,27 @@ int main() {
   change_background (flushedburger);
   textbox ("Really?");
   option_textbox ("Yeah, you match his ambition.", "Yeah, you will never reach your dreams like him.", 1);
-  if (love >= 2) {
+  if (love >= 3) {
     textbox ("Well thank you for being here at BurgerShack Cherry. I'll see you tommorow!");
     textbox ("Good night!");
   }
-  if (love < 2) {
+  if (love < 3) {
     textbox ("Um, well then. It is getting really late, so I will see you tommorrow.");
   } 
+    
+
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
-  if (love > 2) {
+  if (love > 3) {
+    stopSound(lovetheme);
+    playSound(happyending, true);
     drawFilledRectangle (green, R5, rectSize);
     drawText ("good ending", white, textcenter);
+
   }
-  if (love <= 2) {
+  if (love <= 3) {
+    stopSound(lovetheme);
+    playSound(badending, true);
     drawFilledRectangle (red, R5, rectSize);
     drawText ("bad ending", black, textcenter);
   }
