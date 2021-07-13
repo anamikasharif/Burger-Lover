@@ -427,24 +427,29 @@ int main() {
   update_meter();
   textbox("Go home dad. Get out.");
 
-
-
-
+  // final scene
+  cherrybox("Hey, can I talk to you before you leave?");
+  textbox("Of course! What do you need help with?");
+  cherrybox("I have something to need to tell you...");
+  textbox("What do you need to say...?");
+  option_textbox("I- i love you", "I like you, but you are kinda ugly...", 1);
 
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
   if (love > 3) {
     stopSound(lovetheme);
     playSound(happyending, true);
-    drawFilledRectangle (green, R5, rectSize);
-    drawText ("good ending", white, textcenter);
+    // drawFilledRectangle (green, R5, rectSize);
+    // drawText ("good ending", white, textcenter);
+    exposition("After Bill fired Cherry, his business went downhill. He eventually did marry but suffered the same fate as his father, Bob. Cherry went on with life, regretting what could’ve been... ", skyline);
 
   }
   if (love <= 3) {
     stopSound(lovetheme);
     playSound(badending, true);
-    drawFilledRectangle (red, R5, rectSize);
-    drawText ("bad ending", black, textcenter);
+    // drawFilledRectangle (red, R5, rectSize);
+    // drawText ("bad ending", black, textcenter);
+    exposition("Bill accepted. Cherry and Bill went off and got married. They would go on to fix up BurgerShack and make it the best in town!", skyline);
   }
   updateScreen ();
   }
