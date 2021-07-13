@@ -1,5 +1,12 @@
 #include <gbalib.h>
 int love;
+Size meter_sprite;
+Position meter_pos; 
+Sprite emptymeter;
+Sprite meter1; 
+Sprite meter2; 
+Sprite meter3; 
+Sprite fullmeter; 
 void textbox(char * text) {
     Color  lightblue = createColor(204, 255, 255);
     Position rectPos = {20, 100};
@@ -97,14 +104,6 @@ void exposition(char * text, Background background) {
  }
  //need to add all meters with if statement for all based on value of love
 void update_meter() {
-  Size meter_sprite = {32,32};
-  Position meter_pos = {160,20};
-  Sprite emptymeter = createSprite("emptymeter", meter_sprite);
-  Sprite meter1 = createSprite("meter1", meter_sprite);
-  Sprite meter2 = createSprite("meter2", meter_sprite);
-  Sprite meter3 = createSprite("meter3", meter_sprite);
-  Sprite fullmeter = createSprite("fullmeter", meter_sprite);
-
   if (love == 0) {
     updatePosition(emptymeter, meter_pos);
     showSprite(emptymeter);
@@ -113,21 +112,25 @@ void update_meter() {
   if (0 < love < 5) {
     updatePosition(meter1, meter_pos);
     showSprite(meter1);
+    hideSprite(emptymeter);
     updateScreen();
   }
   if (5 <= love < 9) {
     updatePosition(meter2, meter_pos);
     showSprite(meter2);
+    hideSprite(meter1);
     updateScreen();
   }
   if (9 <= love < 12) {
     updatePosition(meter3, meter_pos);
     showSprite(meter3);
+    hideSprite(meter2);
     updateScreen();
   }
   if (love >= 12) {
     updatePosition(fullmeter, meter_pos);
     showSprite(fullmeter);
+    hideSprite(meter3);
     updateScreen();
   }
   updateScreen();
@@ -201,6 +204,15 @@ void option_textbox(char * text1, char * text2, int option) {
 
 int main() {
     love = 0;
+    meter_sprite = (Size) {32,32};
+    emptymeter = createSprite("emptymeter", meter_sprite);
+    meter1 = createSprite("meter1", meter_sprite);
+    meter2 = createSprite("meter2", meter_sprite);
+    meter3 = createSprite("meter3", meter_sprite);
+    fullmeter = createSprite("fullmeter", meter_sprite);
+    meter_pos = (Position) {160,20};
+
+
     Size rectSize = {80, 53};
     Size textSize = {100, 100};
     Size fullscreen = {240, 160};
@@ -497,7 +509,28 @@ int main() {
   option_textbox("I- i love you", "I like you, but you are kinda ugly...", 1);
   update_meter();
   wait (2);
-  drawFilledRectangle (black, R1, fullscreen);
+  // drawFilledRectangle (black, R1, fullscreen);
+  if (love == 0) {
+    hideSprite(emptymeter);
+    updateScreen();
+  }
+  if (0 < love < 5) {
+    hideSprite(meter1);
+    updateScreen();
+  }
+  if (5 <= love < 9) {
+    hideSprite(meter2);
+    updateScreen();
+  }
+  if (9 <= love < 12) {
+    hideSprite(meter3);
+    updateScreen();
+  }
+  if (love >= 12) {
+    hideSprite(fullmeter);
+    updateScreen();
+  }
+  updateScreen();
   if (love >= 12) {
     stopSound(lovetheme);
     playSound(happyending, true);
