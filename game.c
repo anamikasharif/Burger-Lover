@@ -110,14 +110,24 @@ void update_meter() {
     showSprite(emptymeter);
     updateScreen();
   }
-  if (love > 0) {
+  if (0 < love < 5) {
     updatePosition(meter1, meter_pos);
     showSprite(meter1);
     updateScreen();
   }
-  if (love > 3) {
+  if (5 <= love < 9) {
     updatePosition(meter2, meter_pos);
     showSprite(meter2);
+    updateScreen();
+  }
+  if (9 <= love < 12) {
+    updatePosition(meter3, meter_pos);
+    showSprite(meter3);
+    updateScreen();
+  }
+  if (love >= 12) {
+    updatePosition(fullmeter, meter_pos);
+    showSprite(fullmeter);
     updateScreen();
   }
   updateScreen();
@@ -433,10 +443,10 @@ int main() {
   cherrybox("I have something to need to tell you...");
   textbox("What do you need to say...?");
   option_textbox("I- i love you", "I like you, but you are kinda ugly...", 1);
-
+  update_meter();
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
-  if (love > 3) {
+  if (love >= 12) {
     stopSound(lovetheme);
     playSound(happyending, true);
     // drawFilledRectangle (green, R5, rectSize);
@@ -444,7 +454,7 @@ int main() {
     exposition("After Bill fired Cherry, his business went downhill. He eventually did marry but suffered the same fate as his father, Bob. Cherry went on with life, regretting what could’ve been... ", skyline);
 
   }
-  if (love <= 3) {
+  if (love < 12) {
     stopSound(lovetheme);
     playSound(badending, true);
     // drawFilledRectangle (red, R5, rectSize);
