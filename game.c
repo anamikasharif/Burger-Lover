@@ -384,16 +384,16 @@ int main() {
    cherrybox ("Why?");
    change_background (sadburger);
    textbox ("My family wasnt the best if Im being honest");
-   textbox ("It was rough growing up. It was like I was stuck…");
+   textbox ("It was rough growing up. It was like I was stuck ");
    textbox ("I felt so small, stupid and powerless...");
-   textbox ("so I left. And I wanted to become my own burger. Pursue my dream");
+   textbox ("so I left. And I wanted to become my own burger. Pursue my dreams");
    change_background (specialburger);
    textbox ("In a way it was freeing, but in other ways it felt all those dark thoughts were following me like ghosts.");
    option_textbox("Sounds rough, buddy", "I am so sorry to hear about this", 2);
    change_background (normalburger);
    textbox("Sorry that was a lot. I know you came here for a similar reason");
    option_textbox("Um sorry I cant relate.", "Not really but food reminds me of home too.", 2);
-   option_textbox ("Your dream is really beautiful Bill, I believe it can come true.", "Hey Im always here to help.", 1);
+   option_textbox ("Your dream is really beautiful Bill, it will come true.", "Hey Im always here to help.", 1);
    change_background(flushedburger);
    textbox("Anyways, keep up the good work.");
    option_textbox("Well, I better work hard if we can both pursue our dreams", "I need to earn some more cash anyway", 1);
@@ -410,22 +410,24 @@ int main() {
     textbox("I really need your help, no one else applied for your position.");
     option_textbox("Not my fault your restaurant is trash", "I will try to improve my work, I am so sorry", 2);
     update_meter();
-    change_background(madburger);
+    change_background(worriedburger);
     textbox("It is my dream to own a successful restaurant to prove my father wrong");
     option_textbox("Are you okay?", "I bet your father was a great man.", 1);
     update_meter();
-    textbox("My father never really believed in me.He made me feel like a failure.");
-    textbox("Honestly, Cherry he was a pretty awful person... ");
+    textbox("My father never really believed in me. He made me feel like a failure.");
+    change_background (normalburger);
+    textbox("Honestly, Cherry he was a pretty awful person");
     textbox("And I dont know, this restaurant is my way of proving myself.");
+    change_background (worriedburger);
     textbox("Is that pathetic?");
-    option_textbox("Yeah dude.I don’t really care about your daddy issues", "No its not. Burger you are enough and you don’t need to prove yourself", 2);
+    option_textbox("Yeah dude. I don't really care about your daddy issues", "No its not. Burger you are enough.", 2);
     update_meter();
   }
 
   // 3rd date
   if (love >= 6) {
     change_background(normalburger2);
-    textbox("Hey, the restaurant is pretty empty tonight…");
+    textbox("Hey, the restaurant is pretty empty tonight");
     change_background(flushedburger2);
     textbox("What if we closed early and went for a walk?");
   }
@@ -434,24 +436,24 @@ int main() {
     change_background(normalburger2);
     textbox("I think we should go outside to talk what to do with the restaurant");
   }
-  option_textbox("Sounds great!", "Um sure, it’s better than sitting around in your dumpster fire restaurant", 1);
+  option_textbox("Sounds great!", "Um sure, it's better than sitting around in your dumpster fire restaurant", 1);
   update_meter();
   textbox("The sky is so pretty");
   option_textbox("I have seen better", "Like you", 2);
   update_meter();
   change_background(worriedburger3);
-  textbox("oh haha…");
+  textbox("oh haha");
   change_background(normalburger3);
   textbox("*sigh*");
-  option_textbox("What's wrong?", "Oh what’s wrong now??", 1);
+  option_textbox("What's wrong?", "Oh what's wrong now??", 1);
   update_meter();
   change_background(flushedburger3);
-  textbox("There’s just a lot going on at the moment…");
+  textbox("There's just a lot going on at the moment...");
   option_textbox("Is everything ok?","Like what? Just tell me for gods sake", 1);
   update_meter();
 
   if (love >= 7) {
-    textbox("So there’s this tomato-");
+    textbox("So there's this tomato-");
   }
 
   if (love < 7) {
@@ -461,7 +463,7 @@ int main() {
   textbox("oh no...");
   change_background(sadburgerbob);
   bobbox("I finally found you son.");
-  bobbox("Son. Is this what you’ve been doing?");
+  bobbox("Son. Is this what you've been doing!?");
   bobbox("I CANT BELIEVE YOU");
   bobbox("YOU RAN AWAY FROM BURGESLOVIA FOR SOME GIRL? A TOMATO?");
   change_background(worriedburgerbob);
@@ -470,12 +472,22 @@ int main() {
   bobbox("Makes me sick!");
   change_background(madburgerbob);
   textbox("All you do is drink all day and abandon me and my siblings.");
-  textbox("You are a terrible father, and I’m happy with the restaurant I have now!");
+  textbox("You are a terrible father, and I'm happy with the restaurant I have now!");
   bobbox("Your mother would be ashamed.");
   textbox("No, mom would be ashamed of you");
   option_textbox("POP OFF GIRLBOSS", "Your moms better off dead if she knew you were this ugly", 1);
   update_meter();
   textbox("Go home dad. Get out.");
+  change_background (normalburger2);
+  textbox ("Im sorry about that Cherry");
+  textbox ("I'm really sorry...");
+    if (love < 7) {
+  cherrybox ("bill-");
+  textbox ("I think you should leave")
+    }
+    if (love >= 7) {
+      cherrybox ("I'm going to leave Bill. Good night.")
+    }
 
   // final scene
   cherrybox("Hey, can I talk to you before you leave?");
