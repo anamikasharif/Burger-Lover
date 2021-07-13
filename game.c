@@ -99,6 +99,7 @@ void update_meter() {
   }
   updateScreen();
 }
+
 void option_textbox(char * text1, char * text2, int option) {
     Color  lightpink = createColor(255, 212, 230);
     Position rectPos = {20, 100};
@@ -315,18 +316,62 @@ int main() {
   if (love < 3) {
     textbox ("Um, well then. It is getting really late, so I will see you tommorrow.");
   } 
+
+  change_background (skyline);
+  cherrybox ("DAY 2");
+  if (love >= 3) {
+   change_background(flushedburger);
+   textbox ("Hey, Cherry, can I speak with you?");
+   option_textbox("Yes! Of course!", "Is there something wrong", 0);
+   textbox("You have been a great employer so far. I really appreciate all your hard work");
+   option_textbox("Thank you so much! You have been a wonderful boss", "I believe I deserve a promotion. I have been doing all the work.", 1);
+   change_background(normalburger);
+   textbox("It has been a rough time getting this restaurant started");
+   textbox ("I didnt really have much support from my family. I didnt have much money either");
+   textbox ("but I dont know despite all of that. I just had a dream.");
+   textbox("A dream where all different foods come together and enjoy my cuisine");
+   textbox ("I know its kinda stupid. But my best memories as a kid were the dinners with my family.");
+   textbox ("It was a short moment of warmth in a life that was so chaotic and cold...");
+   textbox ("It made me feel at home...");
+   textbox ("And I just want to bring that warm feeling to foods all around Feastopolis");
+   change_background(worriedburger);
+   textbox("um...");
+   cherrybox ("Whats wrong Bill");
+   textbox ("Sorry talking about my dream is a little painful.");
+   cherrybox ("Why?");
+   change_background (sadburger);
+   textbox ("My family wasnt the best if Im being honest");
+   textbox ("It was rough growing up. It was like I was stuck…");
+   textbox ("I felt so small, stupid and powerless...");
+   textbox ("so I left. And I wanted to become my own burger. Pursue my dream");
+   change_background (specialburger);
+   textbox ("In a way it was freeing, but in other ways it felt all those dark thoughts were following me like ghosts.");
+   option_textbox("Sounds rough, buddy", "I am so sorry to hear about this", 2);
+   change_background (normalburger);
+   textbox("Sorry that was a lot. I know you came here for a similar reason");
+   option_textbox("Um sorry I cant relate.", "Not really but food reminds me of home too.", 2);
+   option_textbox ("Your dream is really beautiful Bill, I believe it can come true.", "Hey Im always here to help.", 1);
+   change_background(flushedburger);
+   textbox("Anyways, keep up the good work.");
+   option_textbox("Well, I better work hard if we can both pursue our dreams", "I need to earn some more cash anyway", 1);
+}
+ 
+
+
+
+
     
 
   wait (2);
   drawFilledRectangle (black, R1, fullscreen);
-  if (love > 3) {
+  if (love > 5) {
     stopSound(lovetheme);
     playSound(happyending, true);
     drawFilledRectangle (green, R5, rectSize);
     drawText ("good ending", white, textcenter);
 
   }
-  if (love <= 3) {
+  if (love <= 5) {
     stopSound(lovetheme);
     playSound(badending, true);
     drawFilledRectangle (red, R5, rectSize);
