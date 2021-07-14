@@ -547,4 +547,5 @@ int main() {
     exposition("Bill accepted. Cherry and Bill went off and got married. They would go on to fix up BurgerShack and make it the best in town!", skyline);
   }
   updateScreen ();
+  exposition ("Game created by Anamika Sharif, Elisa Xia, and Ava Herrmann. Coded by Elisa Xia and Anamika Sharif. Assets drawn by Ava Hermann. Music by Michelle Ngo. Special thanks to our instructors, Joshua Viszlai and Bob!", skyline);
   }
