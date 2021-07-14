@@ -281,6 +281,8 @@ int main() {
     exposition ("That never happened though because he and Mama had my sister and me young.", skyline);
     exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'", skyline);
     exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself...", skyline);
+    change_background (skyline);
+    cherrybox ("DAY 2");
     change_background(burgershack);
 
     while (true) {
@@ -296,7 +298,7 @@ int main() {
     textbox("So you must be the new hire. Cherry, right?"); 
     option_textbox("That's me!","Yeah! Nice to meet you! And your name is?", 0 );
     textbox ("I'm Bill! I'm actually the manager here. I know BurgerShack isn't much, but it has a lot of heart.");
-    option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell by the smell that the food is amazing", 0 );
+    option_textbox("It's a bit of a fixer upper but that's why I'm here!", "I bet so. I can already tell the food is amazing", 0 );
     textbox ("I'm glad to hear that! Competition is really tight here especially with TastySandwhich next door.");
     textbox ("But I love this resturant and I hope you learn to love it too!");
     textbox ("Well let's not waste any more time and dive into your first day!");
@@ -426,6 +428,7 @@ int main() {
     textbox("It is my dream to own a successful restaurant to prove my father wrong");
     option_textbox("Are you okay?", "I bet your father was a great man.", 1);
     update_meter();
+    change_background(specialburger);
     textbox("My father never really believed in me. He made me feel like a failure.");
     change_background (normalburger);
     textbox("Honestly, Cherry he was a pretty awful person");
@@ -435,7 +438,8 @@ int main() {
     option_textbox("Yeah dude. I don't really care about your daddy issues", "No its not. Burger you are enough.", 2);
     update_meter();
   }
-
+  change_background (skyline);
+  cherrybox ("DAY 3");
   // 3rd date
   if (love >= 7) {
     change_background(normalburger2);
@@ -502,7 +506,10 @@ int main() {
     }
 
   // final scene
-  cherrybox("Hey, can I talk to you before you leave?");
+  change_background (skyline);
+  cherrybox ("DAY 4");
+  change_background(normalburger2);
+  cherrybox("Hey, can I talk to you?");
   textbox("Of course! What do you need help with?");
   cherrybox("I have something to need to tell you...");
   textbox("What do you need to say...?");
