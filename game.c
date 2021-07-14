@@ -379,7 +379,7 @@ int main() {
    textbox ("Hey, Cherry, can I speak with you?");
    option_textbox("Yes! Of course!", "Is there something wrong", 0);
    textbox("You have been a great employer so far. I really appreciate all your hard work");
-   option_textbox("Thank you so much! You have been a wonderful boss", "I believe I deserve a promotion. I have been doing all the work.", 1);
+   option_textbox("Thank you so much! You have been a wonderful boss", "I believe I deserve a promotion.", 1);
    change_background(normalburger);
    textbox("It has been a rough time getting this restaurant started");
    textbox ("I didnt really have much support from my family. I didnt have much money either");
@@ -448,7 +448,7 @@ int main() {
     change_background(normalburger2);
     textbox("I think we should go outside to talk what to do with the restaurant");
   }
-  option_textbox("Sounds great!", "Um sure, it's better than sitting around in your dumpster fire restaurant", 1);
+  option_textbox("Sounds great!", "Um sure, it's better than your dumpster restaurant", 1);
   update_meter();
   textbox("The sky is so pretty");
   option_textbox("I have seen better", "Like you", 2);
