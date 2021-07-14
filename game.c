@@ -109,19 +109,19 @@ void update_meter() {
     showSprite(emptymeter);
     updateScreen();
   }
-  if (0 < love < 5) {
+  if (0 < love && love < 5) {
     updatePosition(meter1, meter_pos);
     showSprite(meter1);
     hideSprite(emptymeter);
     updateScreen();
   }
-  if (5 <= love < 9) {
+  if (5 <= love && love < 9) {
     updatePosition(meter2, meter_pos);
     showSprite(meter2);
     hideSprite(meter1);
     updateScreen();
   }
-  if (9 <= love < 12) {
+  if (9 <= love && love < 12) {
     updatePosition(meter3, meter_pos);
     showSprite(meter3);
     hideSprite(meter2);
@@ -437,14 +437,14 @@ int main() {
   }
 
   // 3rd date
-  if (love >= 6) {
+  if (love >= 7) {
     change_background(normalburger2);
     textbox("Hey, the restaurant is pretty empty tonight");
     change_background(flushedburger2);
     textbox("What if we closed early and went for a walk?");
   }
 
-  if (love < 6) {
+  if (love < 7) {
     change_background(normalburger2);
     textbox("I think we should go outside to talk what to do with the restaurant");
   }
@@ -464,11 +464,11 @@ int main() {
   option_textbox("Is everything ok?","Like what? Just tell me for gods sake", 1);
   update_meter();
 
-  if (love >= 7) {
+  if (love >= 10) {
     textbox("So there's this tomato-");
   }
 
-  if (love < 7) {
+  if (love < 10) {
     textbox("I really need this restaurant to work-");
   }
   change_background(sadburger3);
@@ -495,10 +495,10 @@ int main() {
   textbox ("I'm really sorry...");
     if (love < 7) {
   cherrybox ("bill-");
-  textbox ("I think you should leave")
+  textbox ("I think you should leave");
     }
     if (love >= 7) {
-      cherrybox ("I'm going to leave Bill. Good night.")
+      cherrybox ("I'm going to leave Bill. Good night.");
     }
 
   // final scene
@@ -514,15 +514,15 @@ int main() {
     hideSprite(emptymeter);
     updateScreen();
   }
-  if (0 < love < 5) {
+  if (0 < love && love < 5) {
     hideSprite(meter1);
     updateScreen();
   }
-  if (5 <= love < 9) {
+  if (5 <= love && love < 9) {
     hideSprite(meter2);
     updateScreen();
   }
-  if (9 <= love < 12) {
+  if (9 <= love && love < 12) {
     hideSprite(meter3);
     updateScreen();
   }
