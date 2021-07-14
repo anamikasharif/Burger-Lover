@@ -536,7 +536,7 @@ int main() {
     playSound(happyending, true);
     // drawFilledRectangle (green, R5, rectSize);
     // drawText ("good ending", white, textcenter);
-    exposition("After Bill fired Cherry, his business went downhill. He eventually did marry but suffered the same fate as his father, Bob. Cherry went on with life, regretting what could’ve been... ", skyline);
+    exposition("After Bill fired Cherry, his business went downhill. He eventually did marry but suffered the same fate as his father, Bob. Cherry went on with life, regretting what could have been... ", skyline);
 
   }
   if (love < 12) {
@@ -547,5 +547,5 @@ int main() {
     exposition("Bill accepted. Cherry and Bill went off and got married. They would go on to fix up BurgerShack and make it the best in town!", skyline);
   }
   updateScreen ();
-  exposition ("Game created by Anamika Sharif, Elisa Xia, and Ava Herrmann. Coded by Elisa Xia and Anamika Sharif. Assets drawn by Ava Hermann. Music by Michelle Ngo. Special thanks to our instructors, Joshua Viszlai and Bob!", skyline);
+  exposition ("Game created by Anamika Sharif, Elisa Xia, and Ava Herrmann. Coded by Elisa Xia and Anamika Sharif. Assets drawn by Ava Herrmann. Music by Michelle Ngo. Special thanks to our instructors, Joshua Viszlai and Bob!", skyline);
   }
