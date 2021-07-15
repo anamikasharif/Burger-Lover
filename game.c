@@ -282,7 +282,7 @@ int main() {
     exposition ("However, Papa was never sad about that. He would always say 'Cherry sweetheart, sometimes reality is a whole lot sweeter than a dream.'", skyline);
     exposition ("In a way, his dream became my dream. Maybe one day I will run a restaurant myself...", skyline);
     change_background (skyline);
-    cherrybox ("DAY 2");
+    cherrybox ("DAY 1");
     change_background(burgershack);
 
     while (true) {
